@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-color: black;
+      }
+      .wrap {
+        width: 1200px;
+        background-color: gray;
+        margin: auto;
+      }
+      header {
+        height: 100px;
+        background-color: purple;
+      }
+      main {
+        display: flex;
+      }
+      nav {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(213, 154, 229);
+      }
+      article {
+        flex-grow: 1;
+        height: 200px;
+        background-color: green;
+      }
+      aside {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+      footer {
+        height: 50px;
+        background-color: brown;
+      }
+
+      @media (max-width: 1200px) {
+        .wrap {
+          width: 100%;
+        }
+        main {
+          flex-wrap: wrap;
+        }
+        aside,
+        article {
+          width: 50%;
+        }
+        nav {
+          width: 100%;
+          height: 50px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        article,
+        aside {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header></header>
+      <main>
+        <nav></nav>
+        <article></article>
+        <aside></aside>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>
