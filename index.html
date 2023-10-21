@@ -3,267 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <script src="js/kit.fontawesome.com_2c87f61656.js" defer></script>
-    <script src="js/js_bootstrap.bundle.min.js" defer></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Admin Dashboard</title>
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        height: 2000px;
+      }
+      .box1 {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 300px;
+        height: 200px;
+        background-color: blue;
+        z-index: 2;
+        opacity: 0.5;
+      }
+
+      .box2 {
+        position: fixed;
+        top: 150px;
+        left: 150px;
+        width: 300px;
+        height: 200px;
+        background-color: gray;
+        z-index: 1;
+      }
+    </style>
   </head>
-  <body class="bg-light">
-    <div class="container-fluid">
-      <div class="row g-0">
-        <div class="col-2 bg-light">
-          <h1 class="h3 text-primary text-center py-3">
-            <i class="fa-solid fa-ghost fs-3 me-2"></i>
-            <span class="d-none d-lg-inline">Admin</span>
-          </h1>
+  <body>
+    <!-- div#box>h2.title+ul>li*3>a[href=#]{item $} -->
 
-          <div class="list-group mb-3 text-center text-lg-start me-1">
-            <div class="list-group-item d-none d-lg-block">
-              <span class="text-muted">CONTROLS</span>
-            </div>
-            <a href="#" class="list-group-item list-group-item-action active">
-              <i class="fa-solid fa-home me-lg-2"></i>
-              <span class="d-none d-lg-inline">Dashboard</span>
-            </a>
-            <a
-              href="#"
-              class="list-group-item list-group-item-action d-lg-flex justify-content-between"
-            >
-              <div>
-                <i class="fa-solid fa-users me-lg-2"></i>
-                <span class="d-none d-lg-inline">Users</span>
-              </div>
-              <div class="badge bg-danger rounded-pill d-none d-lg-block">
-                20
-              </div>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <i class="fa-solid fa-chart-line me-lg-2"></i>
-              <span class="d-none d-lg-inline">Statistics</span>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <i class="fa-solid fa-flag me-lg-2"></i>
-              <span class="d-none d-lg-inline">Reports</span>
-            </a>
-          </div>
-
-          <div class="list-group mb-3 text-center text-lg-start me-1">
-            <div class="list-group-item d-none d-lg-block">
-              <span class="text-muted">ACTIONS</span>
-            </div>
-            <a href="#" class="list-group-item list-group-item-action">
-              <i class="fa-solid fa-user me-lg-2"></i>
-              <span class="d-none d-lg-inline">New User</span>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <i class="fa-solid fa-edit me-lg-2"></i>
-              <span class="d-none d-lg-inline">Update Data</span>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <i class="fa-solid fa-calendar me-lg-2"></i>
-              <span class="d-none d-lg-inline">Add Events</span>
-            </a>
-          </div>
-        </div>
-        <div class="col-10 bg-secondary">
-          <nav class="navbar bg-light navbar-expand sticky-top">
-            <div class="flex-fill"></div>
-            <ul class="navbar-nav me-2">
-              <li class="nav-item dropdown">
-                <a
-                  href="#"
-                  class="nav-link dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                >
-                  <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                  <li>
-                    <a href="#" class="dropdown-item"> User Profile</a>
-                  </li>
-                  <li>
-                    <a href="#" class="dropdown-item"> Logout</a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fa-solid fa-cog"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="alert alert-info m-2 m-lg-3">
-            <i class="fa-solid fa-download me-2"></i>
-            A new version of admin dashboard is released.
-            <a href="#">Download Now!</a>
-          </div>
-
-          <div class="row p-2 p-lg-4 flex-column flex-lg-row">
-            <h2 class="text-white-50 h6">QUICK STATS</h2>
-            <div class="col">
-              <div class="card mb-2">
-                <div class="card-body">
-                  <h1 class="fw-bold">1,250</h1>
-                  <i class="fa-solid fa-chart-line"></i>
-                  <span class="text-muted">Daily visitors</span>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-2">
-                <div class="card-body">
-                  <h1 class="fw-bold">8,210</h1>
-                  <i class="fa-solid fa-chart-line"></i>
-                  <span class="text-muted">Weekly visitors</span>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-2">
-                <div class="card-body">
-                  <h1 class="fw-bold">12,560</h1>
-                  <i class="fa-solid fa-chart-line"></i>
-                  <span class="text-muted">Monthly visitors</span>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card mb-2">
-                <div class="card-body">
-                  <h1 class="fw-bold">102,250</h1>
-                  <i class="fa-solid fa-chart-line"></i>
-                  <span class="text-muted">Yearly visitors</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row p-2 p-lg-4">
-            <div class="col-md col-lg-6 mb-3">
-              <h2 class="h6 text-white-50">LOCATION</h2>
-              <div class="card">
-                <div class="card-body p-lg-4">
-                  <div class="mb-4">
-                    <div class="text-muted fw-bold mb-2">Regional</div>
-                    <div
-                      class="progress"
-                      role="progressbar"
-                      aria-label="Basic example"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="height: 6px"
-                    >
-                      <div class="progress-bar w-25 bg-danger"></div>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <div class="text-muted fw-bold mb-2">Global</div>
-                    <div
-                      class="progress"
-                      role="progressbar"
-                      aria-label="Basic example"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="height: 6px"
-                    >
-                      <div class="progress-bar w-75"></div>
-                    </div>
-                  </div>
-
-                  <div class="mb-4">
-                    <div class="text-muted fw-bold mb-2">Local</div>
-                    <div
-                      class="progress"
-                      role="progressbar"
-                      aria-label="Basic example"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="height: 6px"
-                    >
-                      <div class="progress-bar w-50 bg-warning"></div>
-                    </div>
-                  </div>
-
-                  <div class="mb-2">
-                    <div class="text-muted fw-bold mb-2">Internal</div>
-                    <div
-                      class="progress"
-                      role="progressbar"
-                      aria-label="Basic example"
-                      aria-valuenow="25"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      style="height: 6px"
-                    >
-                      <div class="progress-bar w-25 bg-secondary"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md col-lg-6">
-              <h2 class="h6 text-white-50">DATA</h2>
-              <div class="card">
-                <div class="card-body p-lg-4">
-                  <div class="mb-3 text-end">
-                    <button class="btn btn-sm btn-outline-secondary">
-                      <i class="fa-solid fa-search"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-secondary">
-                      <i class="fa-solid fa-arrow-up-wide-short"></i>
-                    </button>
-                    <button class="btn btn-sm btn-outline-secondary">
-                      <i class="fa-solid fa-filter"></i>
-                    </button>
-                  </div>
-                  <table class="table">
-                    <tr>
-                      <th>ID</th>
-                      <th>Age Group</th>
-                      <th>Data</th>
-                      <th>Progress</th>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>20-30</td>
-                      <td>19%</td>
-                      <td><i class="fa-solid fa-chart-pie"></i></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>30-40</td>
-                      <td>40%</td>
-                      <td><i class="fa-solid fa-chart-line"></i></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>40-50</td>
-                      <td>20%</td>
-                      <td><i class="fa-solid fa-chart-column"></i></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>>50</td>
-                      <td>11%</td>
-                      <td><i class="fa-solid fa-chart-pie"></i></td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="my-3">
-        <div class="text-center text-muted">&copy; Copyright 2023</div>
-      </footer>
-    </div>
+    <div class="box1"></div>
+    <div class="box2"></div>
   </body>
 </html>
