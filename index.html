@@ -1,116 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Slider</title>
-    <style type="text/css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
       body {
         background-color: black;
         color: white;
-      }
-      .slideContainer {
-        width: 600px;
-        background-color: red;
-        margin: 100px auto;
-        position: relative;
-        height: 150px;
-        user-select: none;
+        width: 1000px;
+        margin: 40px auto;
       }
 
-      .slides {
-        text-align: center;
-        background-color: blue;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-        font-size: 30px;
-      }
-
-      .slideContainer > .btnGroup {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        font-weight: bold;
+      #backdrop {
+        background-color: black;
         position: absolute;
-        width: 90%;
-      }
-
-      .btnGroup > div {
-        cursor: pointer;
-        transition: 0.5s ease;
-      }
-
-      .btnGroup > div:first-child:hover {
-        transform: translateX(-5px);
-      }
-
-      .btnGroup > div:last-child:hover {
-        transform: translateX(5px);
-      }
-
-      .slide {
-        height: 100%;
+        top: 0;
+        left: 0;
         width: 100%;
-        line-height: 150px;
-      }
-
-      #slide1 {
-        background-color: red;
-      }
-
-      #slide2 {
-        background-color: green;
+        height: 100%;
+        opacity: 0.5;
         display: none;
       }
 
-      #slide3 {
-        background-color: gray;
+      #modal {
+        position: absolute;
+        width: 40%;
+        top: 15%;
+        left: 30%;
+        height: 250px;
+        background-color: lightcoral;
         display: none;
+      }
+
+      #modal h1 {
+        margin: 0;
+        background-color: blue;
+        padding: 20px;
+      }
+
+      #modal h1 a {
+        color: red;
+        text-decoration: none;
+        float: right;
       }
     </style>
   </head>
   <body>
-    <div class="slideContainer">
-      <div class="btnGroup">
-        <div class="backBtn">&lt;</div>
-        <div class="nextBtn">&gt;</div>
-      </div>
-      <div class="slides">
-        <div id="slide1" class="slide">Slide 1</div>
-        <div id="slide2" class="slide">Slide 2</div>
-        <div id="slide3" class="slide">Slide 3</div>
-      </div>
+    <h1>Modal Dialog</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum enim
+      commodi ex, corrupti nisi voluptates soluta quisquam explicabo iste
+      impedit fuga magnam hic asperiores sunt dolores quod autem, eius
+      veritatis?
+    </p>
+    <button>Open Modal</button>
+
+    <div id="backdrop"></div>
+    <div id="modal">
+      <h1>
+        Modal Title
+        <a href="#">&times;</a>
+      </h1>
     </div>
 
     <script>
-      const backBtn = document.querySelector(".backBtn");
-      const nextBtn = document.querySelector(".nextBtn");
+      document.querySelector("button").onclick = show;
+      document.querySelector("#backdrop").onclick = hide;
+      document.querySelector("#modal h1 a").onclick = hide;
 
-      let slide = 1;
-
-      setInterval(next, 1000);
-
-      nextBtn.addEventListener("click", next);
-
-      function next() {
-        document.querySelector(`#slide${slide}`).style.display = "none";
-        slide++;
-        if (slide > 3) slide = 1;
-        document.querySelector(`#slide${slide}`).style.display = "block";
+      function show() {
+        document.querySelector("#backdrop").style.display = "block";
+        document.querySelector("#modal").style.display = "block";
       }
 
-      backBtn.addEventListener("click", () => {
-        document.querySelector(`#slide${slide}`).style.display = "none";
-        slide--;
-        if (slide < 1) slide = 3;
-        document.querySelector(`#slide${slide}`).style.display = "block";
-      });
+      function hide() {
+        document.querySelector("#backdrop").style.display = "none";
+        document.querySelector("#modal").style.display = "none";
+      }
     </script>
   </body>
 </html>
