@@ -3,23 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Language Features</title>
+    <title>Modules</title>
   </head>
   <body>
-    <script>
-      let name = "rider";
-      let age = 23;
-      let user = { name, age };
+    <script type="module">
+      import { PI, add } from "./math.js";
 
-      let nums = [1, 2, 3, 4];
-      let [n1, n2, n3] = nums;
-
-      let bob = { name1: "bob", age1: 24 };
-      let { name1, age1 } = bob;
-
-      let arr1 = [1, 2];
-      let arr2 = [3, 4];
-      let arr3 = [...arr1, ...arr2];
+      console.log("PI value is: " + PI, "and add fun value is: " + add(1, 2));
     </script>
   </body>
 </html>
