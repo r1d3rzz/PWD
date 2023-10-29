@@ -45,10 +45,7 @@
 
       //Clear Done Todo Btn
       document.querySelector("#clearDoneTodo").onclick = () => {
-        const liTags = document.querySelectorAll("#done li");
-        liTags.forEach((li) => {
-          li.remove();
-        });
+        document.querySelector("#done").textContent = "";
       };
 
       // Total Todos Item Number
