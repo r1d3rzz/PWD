@@ -3,31 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JS OOP</title>
+    <title>Language Features</title>
   </head>
   <body>
     <script>
-      let dog = {
-        name: "mike",
-        hello: function () {
-          console.log(`${this.name} says hello...`);
-        },
-      };
+      let name = "rider";
+      let age = 23;
+      let user = { name, age };
 
-      class Animal {
-        constructor(name) {
-          this.name = name;
-        }
+      let nums = [1, 2, 3, 4];
+      let [n1, n2, n3] = nums;
 
-        hello() {
-          return `${this.name} says hello...`;
-        }
-      }
+      let bob = { name1: "bob", age1: 24 };
+      let { name1, age1 } = bob;
 
-      class Cat extends Animal {}
-
-      let cat = new Cat("Lucy");
-      console.log(cat.hello());
+      let arr1 = [1, 2];
+      let arr2 = [3, 4];
+      let arr3 = [...arr1, ...arr2];
     </script>
   </body>
 </html>
