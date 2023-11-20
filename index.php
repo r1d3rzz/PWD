@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Home</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Roles List</title>
+
     <style>
-        .wrap {
-            width: 100%;
-            max-width: 400px;
-            margin: 40px auto;
+        body {
+            background-color: black;
+            color: white;
         }
     </style>
 </head>
 
-<body class="text-center">
-    <div class="wrap">
-        <h1 class="h3 mb-3">Login</h1>
-        <?php if (isset($_GET['incorrect'])) : ?>
-            <div class="alert alert-warning">
-                Incorrect Email or Password
-            </div>
-        <?php endif ?>
+<body>
+    <?php
 
-        <form action="_actions/login.php" method="post">
-            <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
-            <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">
-                Login
-            </button>
-        </form>
+    $db = new PDO("mysql:dbhost=localhost;dbname=project", "root", "");
+    $sql = "SELECT * FROM roles";
+    $result = $db->query($sql);
+    $rows = $result->fetchAll();
+    ?>
 
-        <br>
-        <a href="register.php">Register</a>
-    </div>
+    <h2>Roles List</h2>
+
+    <ul>
+        <?php foreach ($rows as $row) : ?>
+
+            <li>
+                <?= $row['name']; ?>
+                (<?= $row['value']; ?>)
+                <a href="edit.php?id=<?= $row['id']; ?>">Edit</a>
+                <a href="del.php?id=<?= $row['id']; ?>">Del</a>
+            </li>
+
+        <?php endforeach; ?>
+    </ul>
+
+    <a href="new.php">Add New Role</a>
 </body>
 
 </html>
