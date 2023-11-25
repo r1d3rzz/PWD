@@ -3,9 +3,13 @@
 $name = $_POST['name'];
 $value = $_POST['value'];
 
-$sql = "INSERT INTO roles (name,value) VALUES ('$name',$value)";
+$sql = "INSERT INTO roles (name,value) VALUES (:name,:value)";
 
 $db = new PDO('mysql:dbhost=localhost;dbname=project', "root", "");
-$db->query($sql);
+$statement = $db->prepare($sql);
+$statement->execute([
+    "name" => $name,
+    "value" => $value,
+]);
 
-header('location: /');
+header('location: /project/index.php');

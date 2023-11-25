@@ -7,4 +7,4 @@ $db = dbConnect();
 $id = $_GET['id'];
 $db->query("DELETE FROM roles WHERE id=$id");
 
-header('location: /');
+header('location: /project/index.php');
