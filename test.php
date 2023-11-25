@@ -1,22 +1,17 @@
 <?php
 
-include("vendor/autoload.php");
-
-use Helpers\Auth;
-use Helpers\HTTP;
 use Libs\Database\MYSQL;
 use Libs\Database\UsersTable;
-use Faker\Factory as Faker;
 
-$faker = Faker::create();
-echo $faker->email();
-echo "<br>";
+include("vendor/autoload.php");
 
-Auth::check();
-HTTP::redirect();
+$table = new UsersTable(new MYSQL);
+$id = $table->insert([
+    "name" => "Rider",
+    "email" => "rider@gmail.com",
+    "phone" => "123456",
+    "address" => "yangon",
+    "password" => "password",
+]);
 
-$db = new MYSQL;
-$db->connect();
-
-$users = new UsersTable;
-$users->insert();
+echo $id;
