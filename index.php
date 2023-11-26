@@ -14,12 +14,18 @@
     </style>
 </head>
 
-<body class="text-center">
+<body class="text-center bg-dark text-white">
     <div class="wrap">
         <h1 class="h3 mb-3">Login</h1>
         <?php if (isset($_GET['incorrect'])) : ?>
             <div class="alert alert-warning">
                 Incorrect Email or Password
+            </div>
+        <?php endif ?>
+
+        <?php if (isset($_GET['register'])) : ?>
+            <div class="alert alert-info">
+                Register Success And Please Login
             </div>
         <?php endif ?>
 

@@ -6,12 +6,6 @@ use Libs\Database\UsersTable;
 include("vendor/autoload.php");
 
 $table = new UsersTable(new MYSQL);
-$id = $table->insert([
-    "name" => "Rider",
-    "email" => "rider@gmail.com",
-    "phone" => "123456",
-    "address" => "yangon",
-    "password" => "password",
-]);
+$user = $table->findByEmailAndPassword("rider@gmail.com", "rider");
 
-echo $id;
+print_r($user);

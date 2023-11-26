@@ -11,7 +11,7 @@ class Auth
         if (isset($_SESSION['user'])) {
             return $_SESSION['user'];
         } else {
-            HTTP::redirect("/index.php", "auth=fail");
+            HTTP::redirect("/index.php", "incorrect=fail");
         }
     }
 }
