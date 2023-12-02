@@ -23,6 +23,12 @@
             </div>
         <?php endif ?>
 
+        <?php if (isset($_GET['suspended'])) : ?>
+            <div class="alert alert-danger">
+                Your Account is Suspended
+            </div>
+        <?php endif ?>
+
         <?php if (isset($_GET['register'])) : ?>
             <div class="alert alert-info">
                 Register Success And Please Login

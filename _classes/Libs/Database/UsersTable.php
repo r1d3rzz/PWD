@@ -13,6 +13,21 @@ class UsersTable
         $this->db = $mysql->connect();
     }
 
+    public function getAll()
+    {
+        try {
+            $statement = $this->db->query(
+                "SELECT users.*, roles.name AS role
+                FROM users 
+                LEFT JOIN roles
+                ON users.role_id = roles.id"
+            );
+            return $statement->fetchAll();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function uploadPhoto($id, $photo)
     {
         $statement = $this->db->prepare(
@@ -71,6 +86,42 @@ class UsersTable
         } catch (PDOException $e) {
             echo $e->getMessage();
             exit();
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $statement = $this->db->prepare("DELETE FROM users WHERE id=:id");
+            $statement->execute(['id' => $id]);
+
+            return $statement->rowCount();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function suspend($id)
+    {
+        try {
+            $statement = $this->db->prepare("UPDATE users SET suspended=1 WHERE id=:id");
+            $statement->execute(['id' => $id]);
+
+            return $statement->rowCount();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function unsuspend($id)
+    {
+        try {
+            $statement = $this->db->prepare("UPDATE users SET suspended=0 WHERE id=:id");
+            $statement->execute(['id' => $id]);
+
+            return $statement->rowCount();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
         }
     }
 }

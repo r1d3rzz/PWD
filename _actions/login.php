@@ -14,6 +14,10 @@ $table = new UsersTable(new MYSQL);
 $user = $table->findByEmailAndPassword($email, $password);
 
 if ($user) {
+    if ($user->suspended) {
+        HTTP::redirect("/index.php", "suspended=true");
+    }
+
     session_start();
     $_SESSION['user'] = $user;
     HTTP::redirect("/profile.php");
