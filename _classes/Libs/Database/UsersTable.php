@@ -52,18 +52,22 @@ class UsersTable
             $statement = $this->db->prepare(
                 "SELECT * FROM users 
                 WHERE 
-                email=:email 
-                AND 
-                password=:password"
+                email=:email"
             );
 
             $statement->execute([
                 "email" => $email,
-                "password" => $password,
             ]);
 
             $user = $statement->fetch();
-            return $user ?? false;
+
+            if ($user) {
+                if (password_verify($password, $user->password)) {
+                    return $user;
+                }
+            }
+
+            return false;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -72,6 +76,8 @@ class UsersTable
     public function insert($data)
     {
         try {
+
+            $data["password"] = password_hash($data["password"], PASSWORD_DEFAULT);
 
             $statement = $this->db->prepare(
                 "INSERT INTO users 
