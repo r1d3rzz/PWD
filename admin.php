@@ -20,6 +20,7 @@ $auth = Auth::check();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
     <title>Admin</title>
 </head>
 
@@ -49,7 +50,9 @@ $auth = Auth::check();
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Role</th>
-                <th>Actions</th>
+                <?php if ($auth->role_id >= 2) : ?>
+                    <th>Actions</th>
+                <?php endif; ?>
             </tr>
             <?php foreach ($users as $user) : ?>
                 <tr>
@@ -72,17 +75,36 @@ $auth = Auth::check();
                             </span>
                         <?php endif; ?>
                     </td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="_actions/delete.php?id=<?= $user->id; ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+                    <?php if ($auth->role_id >= 2) : ?>
+                        <td>
+                            <div class="btn-group dropdown">
+                                <?php if ($auth->role_id == 3) : ?>
+                                    <a href="#" class="dropdown-toggle btn btn-sm btn-outline-primary" data-bs-toggle="dropdown">
+                                        Role
+                                    </a>
 
-                            <?php if ($user->suspended) : ?>
-                                <a href="_actions/unsuspend.php?id=<?= $user->id; ?>" class="btn btn-sm btn-warning">Ban</a>
-                            <?php else : ?>
-                                <a href="_actions/suspend.php?id=<?= $user->id; ?>" class="btn btn-sm btn-outline-warning">Ban</a>
-                            <?php endif; ?>
-                        </div>
-                    </td>
+                                    <div class="dropdown-menu dropdown-menu-dark">
+                                        <a class="dropdown-item" href="_actions/role.php?id=<?= $user->id; ?>&role_id=1">User</a>
+                                        <a class="dropdown-item" href="_actions/role.php?id=<?= $user->id; ?>&role_id=2">Manager</a>
+                                        <a class="dropdown-item" href="_actions/role.php?id=<?= $user->id; ?>&role_id=3">Admin</a>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($auth->role_id >= 2) : ?>
+                                    <?php if ($user->suspended) : ?>
+                                        <a href="_actions/unsuspend.php?id=<?= $user->id; ?>" class="btn btn-sm btn-warning">Ban</a>
+                                    <?php else : ?>
+                                        <a href="_actions/suspend.php?id=<?= $user->id; ?>" class="btn btn-sm btn-outline-warning">Ban</a>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php if ($auth->role_id == 3) : ?>
+                                    <a href="_actions/delete.php?id=<?= $user->id; ?>" class="btn btn-sm btn-outline-danger">Delete</a>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                    <?php endif; ?>
+
                 </tr>
             <?php endforeach; ?>
         </table>

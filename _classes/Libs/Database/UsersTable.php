@@ -124,4 +124,19 @@ class UsersTable
             echo $e->getMessage();
         }
     }
+
+    public function changeRole($id, $role_id)
+    {
+        try {
+            $statement = $this->db->prepare("UPDATE users SET role_id=:role_id WHERE id=:id");
+            $statement->execute([
+                'id' => $id,
+                'role_id' => $role_id,
+            ]);
+
+            return $statement->rowCount();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
